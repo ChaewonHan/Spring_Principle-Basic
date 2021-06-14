@@ -14,16 +14,19 @@ public class AppConfig {
 
     @Bean // => 반환된 객체를 스프링 컨테이너에 등록한다, 메서드명을 스프링 빈의 이름으로 사용
     public MemberService memberService(){
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     @Bean
     public MemberRepository memberRepository(){
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
